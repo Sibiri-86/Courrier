@@ -1,0 +1,30 @@
+{
+    "name": "TypeTransporteur",
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "libelle",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "fournisseur",
+            "otherEntityRelationshipName": "type",
+            "relationshipName": "fournisseur"
+        }
+    ],
+    "changelogDate": "20230725163149",
+    "entityTableName": "type_transporteur",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

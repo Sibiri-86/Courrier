@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="client">
+            <h2><span>Client</span> {{client.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nom</span></dt>
+                <dd>
+                    <span>{{client.nom}}</span>
+                </dd>
+                <dt><span>Prenom</span></dt>
+                <dd>
+                    <span>{{client.prenom}}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{client.email}}</span>
+                </dd>
+                <dt><span>Tel</span></dt>
+                <dd>
+                    <span>{{client.tel}}</span>
+                </dd>
+                <dt><span>Code Pays</span></dt>
+                <dd>
+                    <span>{{client.codePays}}</span>
+                </dd>
+                <dt><span>Code Pays 1</span></dt>
+                <dd>
+                    <span>{{client.codePays1}}</span>
+                </dd>
+                <dt><span>Whatsap</span></dt>
+                <dd>
+                    <span>{{client.whatsap}}</span>
+                </dd>
+                <dt><span>Longitude</span></dt>
+                <dd>
+                    <span>{{client.longitude}}</span>
+                </dd>
+                <dt><span>Latitude</span></dt>
+                <dd>
+                    <span>{{client.latitude}}</span>
+                </dd>
+                <dt><span>Pays</span></dt>
+                <dd>
+                    <div *ngIf="client.paysId">
+                        <a [routerLink]="['/pays', client.paysId, 'view']">{{client.paysId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/client', client.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

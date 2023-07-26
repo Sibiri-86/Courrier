@@ -1,0 +1,19 @@
+{
+    "name": "Etagere",
+    "fields": [
+        {
+            "fieldName": "numero",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20230725163153",
+    "entityTableName": "etagere",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

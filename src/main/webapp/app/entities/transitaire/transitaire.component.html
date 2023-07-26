@@ -1,0 +1,78 @@
+<div>
+    <h2 id="page-heading">
+        <span>Transitaires</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-transitaire" [routerLink]="['/transitaire/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Transitaire
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="transitaires">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nom"><span>Nom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="email"><span>Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tel1"><span>Tel 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tel2"><span>Tel 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="codePays1"><span>Code Pays 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="codePays2"><span>Code Pays 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="paysId"><span>Pays</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let transitaire of transitaires ;trackBy: trackId">
+                <td><a [routerLink]="['/transitaire', transitaire.id, 'view' ]">{{transitaire.id}}</a></td>
+                <td>{{transitaire.nom}}</td>
+                <td>{{transitaire.email}}</td>
+                <td>{{transitaire.tel1}}</td>
+                <td>{{transitaire.tel2}}</td>
+                <td>{{transitaire.codePays1}}</td>
+                <td>{{transitaire.codePays2}}</td>
+                <td>
+                    <div *ngIf="transitaire.paysId">
+                        <a [routerLink]="['../pays', transitaire.paysId , 'view' ]" >{{transitaire.paysId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/transitaire', transitaire.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/transitaire', transitaire.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'transitaire', { outlets: { popup: transitaire.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="transitaires && transitaires.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

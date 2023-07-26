@@ -1,0 +1,34 @@
+{
+    "name": "TailleBalle",
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "libelle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "volume",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "tarif",
+            "otherEntityRelationshipName": "tailleBalle",
+            "relationshipName": "tarif"
+        }
+    ],
+    "changelogDate": "20230725163152",
+    "entityTableName": "taille_balle",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

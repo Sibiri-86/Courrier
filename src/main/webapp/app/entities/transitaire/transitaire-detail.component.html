@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="transitaire">
+            <h2><span>Transitaire</span> {{transitaire.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nom</span></dt>
+                <dd>
+                    <span>{{transitaire.nom}}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{transitaire.email}}</span>
+                </dd>
+                <dt><span>Tel 1</span></dt>
+                <dd>
+                    <span>{{transitaire.tel1}}</span>
+                </dd>
+                <dt><span>Tel 2</span></dt>
+                <dd>
+                    <span>{{transitaire.tel2}}</span>
+                </dd>
+                <dt><span>Code Pays 1</span></dt>
+                <dd>
+                    <span>{{transitaire.codePays1}}</span>
+                </dd>
+                <dt><span>Code Pays 2</span></dt>
+                <dd>
+                    <span>{{transitaire.codePays2}}</span>
+                </dd>
+                <dt><span>Pays</span></dt>
+                <dd>
+                    <div *ngIf="transitaire.paysId">
+                        <a [routerLink]="['/pays', transitaire.paysId, 'view']">{{transitaire.paysId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/transitaire', transitaire.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

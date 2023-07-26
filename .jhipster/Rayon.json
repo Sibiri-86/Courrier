@@ -1,0 +1,19 @@
+{
+    "name": "Rayon",
+    "fields": [
+        {
+            "fieldName": "numero",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20230725163154",
+    "entityTableName": "rayon",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

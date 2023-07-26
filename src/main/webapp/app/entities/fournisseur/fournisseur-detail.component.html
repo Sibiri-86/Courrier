@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="fournisseur">
+            <h2><span>Fournisseur</span> {{fournisseur.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nom</span></dt>
+                <dd>
+                    <span>{{fournisseur.nom}}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{fournisseur.email}}</span>
+                </dd>
+                <dt><span>Contact</span></dt>
+                <dd>
+                    <span>{{fournisseur.contact}}</span>
+                </dd>
+                <dt><span>Code Pays</span></dt>
+                <dd>
+                    <span>{{fournisseur.codePays}}</span>
+                </dd>
+                <dt><span>Pays</span></dt>
+                <dd>
+                    <div *ngIf="fournisseur.paysId">
+                        <a [routerLink]="['/pays', fournisseur.paysId, 'view']">{{fournisseur.paysId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Type</span></dt>
+                <dd>
+                    <div *ngIf="fournisseur.typeId">
+                        <a [routerLink]="['/type-transporteur', fournisseur.typeId, 'view']">{{fournisseur.typeId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/fournisseur', fournisseur.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -4,7 +4,7 @@ entity Pays {
  code String
  libelle String
  }
-entity Site { 
+entity Site {
 libelle String
 }
 entity Agent {
@@ -14,7 +14,7 @@ email String
 tel String
 codePays String
 fonction String
-} 
+}
 entity Transitaire {
 nom String
 email String
@@ -41,7 +41,7 @@ whatsap String
 longitude Double
 latitude Double
 }
-entity TypeTransport {
+entity TypeTransporteur {
 code String
 libelle String
 }
@@ -69,13 +69,13 @@ montant BigDecimal
 // defining multiple OneToMany relationships with comments
 relationship OneToMany {
 	Pays to Site{pays}
-    Site to Agence{site}
+    Site to Agent{site}
     Pays to Transitaire{pays}
     Pays to Fournisseur{pays}
     Pays to Client{pays}
     TypeTransporteur to Fournisseur{type}
     TailleBalle to Tarif{tailleBalle}
-	
+
 }
 
 

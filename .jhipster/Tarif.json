@@ -1,0 +1,27 @@
+{
+    "name": "Tarif",
+    "fields": [
+        {
+            "fieldName": "montant",
+            "fieldType": "BigDecimal"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tailleBalle",
+            "otherEntityRelationshipName": "tarif",
+            "relationshipName": "tailleBalle",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20230725163155",
+    "entityTableName": "tarif",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

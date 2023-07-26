@@ -1,0 +1,48 @@
+{
+    "name": "Pays",
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "libelle",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "site",
+            "otherEntityRelationshipName": "pays",
+            "relationshipName": "site"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "transitaire",
+            "otherEntityRelationshipName": "pays",
+            "relationshipName": "transitaire"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "fournisseur",
+            "otherEntityRelationshipName": "pays",
+            "relationshipName": "fournisseur"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "client",
+            "otherEntityRelationshipName": "pays",
+            "relationshipName": "client"
+        }
+    ],
+    "changelogDate": "20230725163143",
+    "entityTableName": "pays",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

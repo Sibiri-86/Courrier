@@ -1,0 +1,47 @@
+{
+    "name": "Agent",
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "prenom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tel",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codePays",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fonction",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "site",
+            "otherEntityRelationshipName": "agent",
+            "relationshipName": "site",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20230725163145",
+    "entityTableName": "agent",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

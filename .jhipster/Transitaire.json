@@ -1,0 +1,47 @@
+{
+    "name": "Transitaire",
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tel1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tel2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codePays1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codePays2",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "pays",
+            "otherEntityRelationshipName": "transitaire",
+            "relationshipName": "pays",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20230725163146",
+    "entityTableName": "transitaire",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

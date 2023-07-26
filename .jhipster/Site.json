@@ -1,0 +1,33 @@
+{
+    "name": "Site",
+    "fields": [
+        {
+            "fieldName": "libelle",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "agent",
+            "otherEntityRelationshipName": "site",
+            "relationshipName": "agent"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "pays",
+            "otherEntityRelationshipName": "site",
+            "relationshipName": "pays",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20230725163144",
+    "entityTableName": "site",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
