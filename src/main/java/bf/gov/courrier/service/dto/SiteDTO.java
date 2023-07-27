@@ -11,8 +11,11 @@ public class SiteDTO implements Serializable {
 
     private String libelle;
 
+    private String pays;
+
 
     private Long paysId;
+
 
     public Long getId() {
         return id;
@@ -20,6 +23,14 @@ public class SiteDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+     public String getPays() {
+        return pays;
+    }
+
+    public void setPays(String pays) {
+        this.pays = pays;
     }
 
     public String getLibelle() {

@@ -12,6 +12,7 @@ import org.mapstruct.*;
 public interface TransitaireMapper extends EntityMapper<TransitaireDTO, Transitaire> {
 
     @Mapping(source = "pays.id", target = "paysId")
+    @Mapping(source = "pays.libelle", target = "pays")
     TransitaireDTO toDto(Transitaire transitaire);
 
     @Mapping(source = "paysId", target = "pays")

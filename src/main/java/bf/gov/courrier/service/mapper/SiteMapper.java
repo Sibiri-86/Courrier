@@ -12,6 +12,7 @@ import org.mapstruct.*;
 public interface SiteMapper extends EntityMapper<SiteDTO, Site> {
 
     @Mapping(source = "pays.id", target = "paysId")
+    @Mapping(source = "pays.libelle", target = "pays")
     SiteDTO toDto(Site site);
 
     @Mapping(target = "agents", ignore = true)

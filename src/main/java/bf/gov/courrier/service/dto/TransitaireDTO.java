@@ -24,6 +24,16 @@ public class TransitaireDTO implements Serializable {
 
     private Long paysId;
 
+    private String pays;
+
+    public String getPays() {
+        return pays;
+    }
+
+    public void setPays(String pays) {
+        this.pays = pays;
+    }
+
     public Long getId() {
         return id;
     }
