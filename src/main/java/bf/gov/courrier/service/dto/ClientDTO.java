@@ -21,15 +21,25 @@ public class ClientDTO implements Serializable {
 
     private String codePays1;
 
-    private String whatsap;
+    private String whatsapp;
 
     private Double longitude;
 
     private Double latitude;
 
+    private String pays;
 
     private Long paysId;
 
+    public String getPays() {
+        return pays;
+    }
+
+    public void setPays(String pays) {
+        this.pays = pays;
+    }
+
+    
     public Long getId() {
         return id;
     }
@@ -86,12 +96,12 @@ public class ClientDTO implements Serializable {
         this.codePays1 = codePays1;
     }
 
-    public String getWhatsap() {
-        return whatsap;
+    public String getWhatsapp() {
+        return whatsapp;
     }
 
-    public void setWhatsap(String whatsap) {
-        this.whatsap = whatsap;
+    public void setWhatsapp(String whatsapp) {
+        this.whatsapp = whatsapp;
     }
 
     public Double getLongitude() {
@@ -149,7 +159,7 @@ public class ClientDTO implements Serializable {
             ", tel='" + getTel() + "'" +
             ", codePays='" + getCodePays() + "'" +
             ", codePays1='" + getCodePays1() + "'" +
-            ", whatsap='" + getWhatsap() + "'" +
+            ", whatsap='" + getWhatsapp() + "'" +
             ", longitude=" + getLongitude() +
             ", latitude=" + getLatitude() +
             ", pays=" + getPaysId() +

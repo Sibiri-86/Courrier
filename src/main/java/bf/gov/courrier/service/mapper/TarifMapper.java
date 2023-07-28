@@ -12,6 +12,7 @@ import org.mapstruct.*;
 public interface TarifMapper extends EntityMapper<TarifDTO, Tarif> {
 
     @Mapping(source = "tailleBalle.id", target = "tailleBalleId")
+    @Mapping(source = "tailleBalle.volume", target = "volume")
     TarifDTO toDto(Tarif tarif);
 
     @Mapping(source = "tailleBalleId", target = "tailleBalle")

@@ -39,8 +39,8 @@ public class Client implements Serializable {
     @Column(name = "code_pays_1")
     private String codePays1;
 
-    @Column(name = "whatsap")
-    private String whatsap;
+    @Column(name = "whatsapp")
+    private String whatsapp;
 
     @Column(name = "longitude")
     private Double longitude;
@@ -139,17 +139,17 @@ public class Client implements Serializable {
         this.codePays1 = codePays1;
     }
 
-    public String getWhatsap() {
-        return whatsap;
+    public String getWhatsapp() {
+        return whatsapp;
     }
 
-    public Client whatsap(String whatsap) {
-        this.whatsap = whatsap;
+    public Client whatsapp(String whatsapp) {
+        this.whatsapp = whatsapp;
         return this;
     }
 
-    public void setWhatsap(String whatsap) {
-        this.whatsap = whatsap;
+    public void setWhatsapp(String whatsapp) {
+        this.whatsapp = whatsapp;
     }
 
     public Double getLongitude() {
@@ -222,7 +222,7 @@ public class Client implements Serializable {
             ", tel='" + getTel() + "'" +
             ", codePays='" + getCodePays() + "'" +
             ", codePays1='" + getCodePays1() + "'" +
-            ", whatsap='" + getWhatsap() + "'" +
+            ", whatsap='" + getWhatsapp() + "'" +
             ", longitude=" + getLongitude() +
             ", latitude=" + getLatitude() +
             "}";

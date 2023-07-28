@@ -11,10 +11,20 @@ public class TarifDTO implements Serializable {
     private Long id;
 
     private BigDecimal montant;
+    private Long volume;
 
 
     private Long tailleBalleId;
 
+    public Long getVolume() {
+        return volume;
+    }
+
+    public void setVolume(Long volume) {
+        this.volume = volume;
+    }
+
+    
     public Long getId() {
         return id;
     }

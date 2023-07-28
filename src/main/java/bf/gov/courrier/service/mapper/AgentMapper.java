@@ -12,6 +12,7 @@ import org.mapstruct.*;
 public interface AgentMapper extends EntityMapper<AgentDTO, Agent> {
 
     @Mapping(source = "site.id", target = "siteId")
+    @Mapping(source = "site.libelle", target = "site")
     AgentDTO toDto(Agent agent);
 
     @Mapping(source = "siteId", target = "site")
