@@ -12,6 +12,7 @@ import org.mapstruct.*;
 public interface FournisseurMapper extends EntityMapper<FournisseurDTO, Fournisseur> {
 
     @Mapping(source = "pays.id", target = "paysId")
+    @Mapping(source = "pays.libelle", target = "pays")
     @Mapping(source = "type.id", target = "typeId")
     FournisseurDTO toDto(Fournisseur fournisseur);
 

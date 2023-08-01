@@ -21,6 +21,16 @@ public class FournisseurDTO implements Serializable {
     private Long paysId;
 
     private Long typeId;
+    private String pays;
+
+    public String getPays() {
+        return pays;
+    }
+
+    public void setPays(String pays) {
+        this.pays = pays;
+    }
+    
 
     public Long getId() {
         return id;
