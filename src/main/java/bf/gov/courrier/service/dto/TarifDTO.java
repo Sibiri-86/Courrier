@@ -15,6 +15,16 @@ public class TarifDTO implements Serializable {
 
 
     private Long tailleBalleId;
+    
+    private Long numero;
+
+    public Long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
 
     public Long getVolume() {
         return volume;

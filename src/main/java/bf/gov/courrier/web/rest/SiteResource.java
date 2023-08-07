@@ -116,4 +116,11 @@ public class SiteResource {
         siteService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    
+     @GetMapping("/sites/pays")
+    public ResponseEntity<List<SiteDTO>> getAllAgentsByPays(@RequestParam Long paysId) {
+        log.debug("REST request to get a page of Agents");
+        List<SiteDTO> clients = siteService.findAllByPays(paysId);
+        return ResponseEntity.ok(clients);
+    }
 }

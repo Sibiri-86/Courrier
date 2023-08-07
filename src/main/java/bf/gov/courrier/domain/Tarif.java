@@ -28,6 +28,16 @@ public class Tarif implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("tarifs")
     private TailleBalle tailleBalle;
+    
+    private Long numero;
+
+    public Long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {

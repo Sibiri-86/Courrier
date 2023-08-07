@@ -43,6 +43,7 @@ public class TransporteurServiceImpl implements TransporteurService {
     public TransporteurDTO save(TransporteurDTO transporteurDTO) {
         log.debug("Request to save Transporteur : {}", transporteurDTO);
         Transporteur transporteur = transporteurMapper.toEntity(transporteurDTO);
+         transporteur.setNumero(transporteurRepository.findAll().size()+0L );
         transporteur = transporteurRepository.save(transporteur);
         return transporteurMapper.toDto(transporteur);
     }

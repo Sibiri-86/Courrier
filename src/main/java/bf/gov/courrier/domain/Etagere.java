@@ -21,7 +21,7 @@ public class Etagere implements Serializable {
     private Long id;
 
     @Column(name = "numero")
-    private Long numero;
+    private String numero;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -32,16 +32,16 @@ public class Etagere implements Serializable {
         this.id = id;
     }
 
-    public Long getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public Etagere numero(Long numero) {
+    public Etagere numero(String numero) {
         this.numero = numero;
         return this;
     }
 
-    public void setNumero(Long numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove

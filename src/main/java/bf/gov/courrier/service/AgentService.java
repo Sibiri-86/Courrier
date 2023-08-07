@@ -1,6 +1,7 @@
 package bf.gov.courrier.service;
 
 import bf.gov.courrier.service.dto.AgentDTO;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -43,4 +44,6 @@ public interface AgentService {
      * @param id the id of the entity
      */
     void delete(Long id);
+    
+    List<AgentDTO> findAllBySite(Long siteId);
 }

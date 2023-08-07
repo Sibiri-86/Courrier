@@ -35,6 +35,18 @@ public class TailleBalle implements Serializable {
     @OneToMany(mappedBy = "tailleBalle")
     private Set<Tarif> tarifs = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    
+    private Long numero;
+
+    public Long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
+     
+     
     public Long getId() {
         return id;
     }

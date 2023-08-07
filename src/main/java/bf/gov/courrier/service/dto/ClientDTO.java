@@ -30,6 +30,15 @@ public class ClientDTO implements Serializable {
     private String pays;
 
     private Long paysId;
+    private Long numero;
+
+    public Long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
 
     public String getPays() {
         return pays;

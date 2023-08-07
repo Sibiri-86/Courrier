@@ -1,6 +1,7 @@
 package bf.gov.courrier.service;
 
 import bf.gov.courrier.service.dto.ClientDTO;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -43,4 +44,5 @@ public interface ClientService {
      * @param id the id of the entity
      */
     void delete(Long id);
+     List<ClientDTO> findAllByPays(Long paysId);
 }

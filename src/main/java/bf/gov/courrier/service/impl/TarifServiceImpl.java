@@ -43,6 +43,7 @@ public class TarifServiceImpl implements TarifService {
     public TarifDTO save(TarifDTO tarifDTO) {
         log.debug("Request to save Tarif : {}", tarifDTO);
         Tarif tarif = tarifMapper.toEntity(tarifDTO);
+         tarif.setNumero(tarifRepository.findAll().size()+0L );
         tarif = tarifRepository.save(tarif);
         return tarifMapper.toDto(tarif);
     }

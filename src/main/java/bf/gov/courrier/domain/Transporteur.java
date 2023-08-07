@@ -22,6 +22,16 @@ public class Transporteur implements Serializable {
 
     @Column(name = "libelle")
     private String libelle;
+    
+    private Long numero;
+
+    public Long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {

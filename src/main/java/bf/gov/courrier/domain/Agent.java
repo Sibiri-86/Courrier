@@ -38,6 +38,8 @@ public class Agent implements Serializable {
 
     @Column(name = "fonction")
     private String fonction;
+    
+    private Long numero;
 
     @ManyToOne
     @JsonIgnoreProperties("agents")
@@ -142,6 +144,16 @@ public class Agent implements Serializable {
     public void setSite(Site site) {
         this.site = site;
     }
+
+    public Long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
+    
+    
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

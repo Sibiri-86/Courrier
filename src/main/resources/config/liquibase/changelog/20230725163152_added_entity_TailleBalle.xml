@@ -33,6 +33,9 @@
             <column name="volume" type="bigint">
                 <constraints nullable="true" />
             </column>
+            <column name="numero" type="bigint">
+                <constraints nullable="true" />
+            </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>

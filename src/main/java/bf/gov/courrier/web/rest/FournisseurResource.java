@@ -116,4 +116,11 @@ public class FournisseurResource {
         fournisseurService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    
+    @GetMapping("/fournisseurs/pays")
+    public ResponseEntity<List<FournisseurDTO>> getAllAgentsByPays(@RequestParam Long paysId) {
+        log.debug("REST request to get a page of Agents");
+        List<FournisseurDTO> clients = fournisseurService.findAllByPays(paysId);
+        return ResponseEntity.ok(clients);
+    }
 }

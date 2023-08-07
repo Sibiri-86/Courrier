@@ -15,6 +15,15 @@ public class TailleBalleDTO implements Serializable {
 
     private Long volume;
 
+    private Long numero;
+
+    public Long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
 
     public Long getId() {
         return id;

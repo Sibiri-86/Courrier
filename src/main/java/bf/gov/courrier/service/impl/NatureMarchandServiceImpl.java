@@ -43,6 +43,7 @@ public class NatureMarchandServiceImpl implements NatureMarchandService {
     public NatureMarchandDTO save(NatureMarchandDTO natureMarchandDTO) {
         log.debug("Request to save NatureMarchand : {}", natureMarchandDTO);
         NatureMarchand natureMarchand = natureMarchandMapper.toEntity(natureMarchandDTO);
+         natureMarchand.setNumero(natureMarchandRepository.findAll().size()+0L );
         natureMarchand = natureMarchandRepository.save(natureMarchand);
         return natureMarchandMapper.toDto(natureMarchand);
     }

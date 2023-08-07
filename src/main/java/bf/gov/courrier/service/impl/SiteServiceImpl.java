@@ -5,6 +5,7 @@ import bf.gov.courrier.domain.Site;
 import bf.gov.courrier.repository.SiteRepository;
 import bf.gov.courrier.service.dto.SiteDTO;
 import bf.gov.courrier.service.mapper.SiteMapper;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing Site.
@@ -43,6 +45,7 @@ public class SiteServiceImpl implements SiteService {
     public SiteDTO save(SiteDTO siteDTO) {
         log.debug("Request to save Site : {}", siteDTO);
         Site site = siteMapper.toEntity(siteDTO);
+         site.setNumero(siteRepository.findAll().size()+0L );
         site = siteRepository.save(site);
         return siteMapper.toDto(site);
     }
@@ -86,4 +89,9 @@ public class SiteServiceImpl implements SiteService {
         log.debug("Request to delete Site : {}", id);
         siteRepository.deleteById(id);
     }
+    
+    public List<SiteDTO> findAllByPays(Long siteId) {
+          return siteRepository.findByPaysId(siteId).stream()
+            .map(siteMapper::toDto).collect(Collectors.toList());
+     }
 }

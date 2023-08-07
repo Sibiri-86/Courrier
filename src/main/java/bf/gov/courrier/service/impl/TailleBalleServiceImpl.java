@@ -43,6 +43,7 @@ public class TailleBalleServiceImpl implements TailleBalleService {
     public TailleBalleDTO save(TailleBalleDTO tailleBalleDTO) {
         log.debug("Request to save TailleBalle : {}", tailleBalleDTO);
         TailleBalle tailleBalle = tailleBalleMapper.toEntity(tailleBalleDTO);
+         tailleBalle.setNumero(tailleBalleRepository.findAll().size()+0L );
         tailleBalle = tailleBalleRepository.save(tailleBalle);
         return tailleBalleMapper.toDto(tailleBalle);
     }

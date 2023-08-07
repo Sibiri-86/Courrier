@@ -116,4 +116,12 @@ public class AgentResource {
         agentService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    
+    @GetMapping("/agents/sites")
+    public ResponseEntity<List<AgentDTO>> getAllAgentsBySite(@RequestParam Long siteId) {
+         System.out.println("====================iii===="+siteId);
+        log.debug("REST request to get a page of Agents");
+        List<AgentDTO> agents = agentService.findAllBySite(siteId);
+        return ResponseEntity.ok(agents);
+    }
 }

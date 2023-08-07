@@ -22,6 +22,16 @@ public class FournisseurDTO implements Serializable {
 
     private Long typeId;
     private String pays;
+    
+    private Long numero;
+
+    public Long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
 
     public String getPays() {
         return pays;

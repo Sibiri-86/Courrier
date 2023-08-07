@@ -116,4 +116,11 @@ public class ClientResource {
         clientService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    
+     @GetMapping("/clients/pays")
+    public ResponseEntity<List<ClientDTO>> getAllAgentsByPays(@RequestParam Long paysId) {
+        log.debug("REST request to get a page of Agents");
+        List<ClientDTO> clients = clientService.findAllByPays(paysId);
+        return ResponseEntity.ok(clients);
+    }
 }

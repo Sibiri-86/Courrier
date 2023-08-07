@@ -47,12 +47,22 @@ public class Client implements Serializable {
 
     @Column(name = "latitude")
     private Double latitude;
+    
+    private Long numero;
 
     @ManyToOne
     @JsonIgnoreProperties("clients")
     private Pays pays;
+    
+    public Long getNumero() {
+        return numero;
+    }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public void setNumero(Long numero) {    
+        this.numero = numero;
+    }
+
     public Long getId() {
         return id;
     }

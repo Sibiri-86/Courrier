@@ -5,6 +5,7 @@ import bf.gov.courrier.domain.Agent;
 import bf.gov.courrier.repository.AgentRepository;
 import bf.gov.courrier.service.dto.AgentDTO;
 import bf.gov.courrier.service.mapper.AgentMapper;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing Agent.
@@ -43,6 +45,7 @@ public class AgentServiceImpl implements AgentService {
     public AgentDTO save(AgentDTO agentDTO) {
         log.debug("Request to save Agent : {}", agentDTO);
         Agent agent = agentMapper.toEntity(agentDTO);
+        agent.setNumero(agentRepository.findAll().size()+0L );
         agent = agentRepository.save(agent);
         return agentMapper.toDto(agent);
     }
@@ -86,4 +89,9 @@ public class AgentServiceImpl implements AgentService {
         log.debug("Request to delete Agent : {}", id);
         agentRepository.deleteById(id);
     }
+    
+     public List<AgentDTO> findAllBySite(Long siteId) {
+          return agentRepository.findBySiteId(siteId).stream()
+            .map(agentMapper::toDto).collect(Collectors.toList());
+     }
 }

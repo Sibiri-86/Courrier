@@ -25,6 +25,16 @@ public class AgentDTO implements Serializable {
     private Long siteId;
     
     private String site;
+    
+    private Long numero;
+
+    public Long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
 
     public String getSite() {
         return site;

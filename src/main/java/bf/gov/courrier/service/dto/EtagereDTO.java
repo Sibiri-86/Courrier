@@ -9,7 +9,7 @@ public class EtagereDTO implements Serializable {
 
     private Long id;
 
-    private Long numero;
+    private String numero;
 
 
     public Long getId() {
@@ -20,11 +20,11 @@ public class EtagereDTO implements Serializable {
         this.id = id;
     }
 
-    public Long getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(Long numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 

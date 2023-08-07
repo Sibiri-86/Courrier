@@ -25,8 +25,18 @@ public class NatureMarchand implements Serializable {
 
     @Column(name = "libelle")
     private String libelle;
+    
+     private Long numero;
+     
+    public Long getNumero() {
+        return numero;
+    }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public void setNumero(Long numero) {     
+        this.numero = numero;
+    }
+
     public Long getId() {
         return id;
     }

@@ -46,7 +46,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="whatsap" type="varchar(255)">
+            <column name="whatsapp" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
@@ -59,6 +59,9 @@
             </column>
 
             <column name="pays_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="numero" type="bigint">
                 <constraints nullable="true" />
             </column>
 

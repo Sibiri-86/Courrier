@@ -5,6 +5,7 @@ import bf.gov.courrier.domain.Client;
 import bf.gov.courrier.repository.ClientRepository;
 import bf.gov.courrier.service.dto.ClientDTO;
 import bf.gov.courrier.service.mapper.ClientMapper;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing Client.
@@ -43,6 +45,7 @@ public class ClientServiceImpl implements ClientService {
     public ClientDTO save(ClientDTO clientDTO) {
         log.debug("Request to save Client : {}", clientDTO);
         Client client = clientMapper.toEntity(clientDTO);
+         client.setNumero(clientRepository.findAll().size()+0L );
         client = clientRepository.save(client);
         return clientMapper.toDto(client);
     }
@@ -86,4 +89,9 @@ public class ClientServiceImpl implements ClientService {
         log.debug("Request to delete Client : {}", id);
         clientRepository.deleteById(id);
     }
+    
+    public List<ClientDTO> findAllByPays(Long siteId) {
+          return clientRepository.findByPaysId(siteId).stream()
+            .map(clientMapper::toDto).collect(Collectors.toList());
+     }
 }

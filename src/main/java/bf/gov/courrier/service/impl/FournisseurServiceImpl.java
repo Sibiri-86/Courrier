@@ -5,6 +5,7 @@ import bf.gov.courrier.domain.Fournisseur;
 import bf.gov.courrier.repository.FournisseurRepository;
 import bf.gov.courrier.service.dto.FournisseurDTO;
 import bf.gov.courrier.service.mapper.FournisseurMapper;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing Fournisseur.
@@ -43,6 +45,7 @@ public class FournisseurServiceImpl implements FournisseurService {
     public FournisseurDTO save(FournisseurDTO fournisseurDTO) {
         log.debug("Request to save Fournisseur : {}", fournisseurDTO);
         Fournisseur fournisseur = fournisseurMapper.toEntity(fournisseurDTO);
+         fournisseur.setNumero(fournisseurRepository.findAll().size()+0L );
         fournisseur = fournisseurRepository.save(fournisseur);
         return fournisseurMapper.toDto(fournisseur);
     }
@@ -86,4 +89,9 @@ public class FournisseurServiceImpl implements FournisseurService {
         log.debug("Request to delete Fournisseur : {}", id);
         fournisseurRepository.deleteById(id);
     }
+    
+    public List<FournisseurDTO> findAllByPays(Long siteId) {
+          return fournisseurRepository.findByPaysId(siteId).stream()
+            .map(fournisseurMapper::toDto).collect(Collectors.toList());
+     }
 }
