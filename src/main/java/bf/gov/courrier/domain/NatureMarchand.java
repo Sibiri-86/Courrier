@@ -26,15 +26,14 @@ public class NatureMarchand implements Serializable {
     @Column(name = "libelle")
     private String libelle;
     
-     private Long numero;
-     
-    public Long getNumero() {
-        return numero;
+      private Boolean deleted = Boolean.FALSE;
+
+    public Boolean getDeleted() {
+        return deleted;
     }
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public void setNumero(Long numero) {     
-        this.numero = numero;
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
     }
 
     public Long getId() {

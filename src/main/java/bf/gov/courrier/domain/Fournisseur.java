@@ -32,7 +32,6 @@ public class Fournisseur implements Serializable {
 
     @Column(name = "code_pays")
     private String codePays;
-    private Long numero;
 
     @ManyToOne
     @JsonIgnoreProperties("fournisseurs")
@@ -42,13 +41,14 @@ public class Fournisseur implements Serializable {
     @JsonIgnoreProperties("fournisseurs")
     private TypeTransporteur type;
     
-    public Long getNumero() {
-        return numero;
+     private Boolean deleted = Boolean.FALSE;
+
+    public Boolean getDeleted() {
+        return deleted;
     }
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public void setNumero(Long numero) {    
-        this.numero = numero;
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
     }
 
     public Long getId() {

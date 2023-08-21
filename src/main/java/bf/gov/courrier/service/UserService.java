@@ -3,7 +3,11 @@ package bf.gov.courrier.service;
 import bf.gov.courrier.config.Constants;
 import bf.gov.courrier.domain.Authority;
 import bf.gov.courrier.domain.User;
+import bf.gov.courrier.domain.Agent;
+import bf.gov.courrier.domain.Profile;
+import bf.gov.courrier.repository.AgentRepository;
 import bf.gov.courrier.repository.AuthorityRepository;
+import bf.gov.courrier.repository.ProfileRepository;
 import bf.gov.courrier.repository.UserRepository;
 import bf.gov.courrier.security.AuthoritiesConstants;
 import bf.gov.courrier.security.SecurityUtils;
@@ -25,6 +29,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Service class for managing users.
@@ -43,6 +48,10 @@ public class UserService {
 
     private final CacheManager cacheManager;
 
+    @Autowired
+    AgentRepository agentRepository;
+    @Autowired
+    ProfileRepository profileRepository;
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -117,6 +126,15 @@ public class UserService {
         Set<Authority> authorities = new HashSet<>();
         authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
         newUser.setAuthorities(authorities);
+        Optional<Agent> agent = agentRepository.findById(userDTO.getAgentId());
+        if(agent.isPresent()) {
+            newUser.setAgent(agent.get());
+        }
+        
+        Optional<Profile> profile =profileRepository.findById(userDTO.getProfileId());
+        if(profile.isPresent()) {
+            newUser.setProfile(profile.get());
+        }
         userRepository.save(newUser);
         this.clearUserCaches(newUser);
         log.debug("Created Information for User: {}", newUser);
@@ -158,6 +176,15 @@ public class UserService {
                 .collect(Collectors.toSet());
             user.setAuthorities(authorities);
         }
+        Optional<Agent> agent = agentRepository.findById(userDTO.getAgentId());
+        if(agent.isPresent()) {
+            user.setAgent(agent.get());
+        }
+        
+        Optional<Profile> profile =profileRepository.findById(userDTO.getProfileId());
+        if(profile.isPresent()) {
+            user.setProfile(profile.get());
+        }
         userRepository.save(user);
         this.clearUserCaches(user);
         log.debug("Created Information for User: {}", user);
@@ -194,6 +221,7 @@ public class UserService {
      * @return updated user
      */
     public Optional<UserDTO> updateUser(UserDTO userDTO) {
+        
         return Optional.of(userRepository
             .findById(userDTO.getId()))
             .filter(Optional::isPresent)
@@ -207,13 +235,32 @@ public class UserService {
                 user.setImageUrl(userDTO.getImageUrl());
                 user.setActivated(userDTO.isActivated());
                 user.setLangKey(userDTO.getLangKey());
-                Set<Authority> managedAuthorities = user.getAuthorities();
+                Optional<Agent> agent = agentRepository.findById(userDTO.getAgentId());
+                if(agent.isPresent()) {
+                    System.out.println("===============");
+                    System.out.println(userDTO.getAgentId());
+                    System.out.println("===============");
+                    user.setAgent(agent.get());
+                }
+
+                Optional<Profile> profile = profileRepository.findById(userDTO.getProfileId());
+                if(profile.isPresent()) {
+                    System.out.println("===============");
+                    System.out.println(userDTO.getProfileId());
+                    System.out.println("===============");
+                    user.setProfile(profile.get());
+                }
+                
+                if(!user.getAuthorities().isEmpty()) {
+                    Set<Authority> managedAuthorities = user.getAuthorities();
                 managedAuthorities.clear();
                 userDTO.getAuthorities().stream()
                     .map(authorityRepository::findById)
                     .filter(Optional::isPresent)
                     .map(Optional::get)
                     .forEach(managedAuthorities::add);
+                }
+                
                 this.clearUserCaches(user);
                 log.debug("Changed Information for User: {}", user);
                 return user;

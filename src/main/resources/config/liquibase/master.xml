@@ -25,5 +25,11 @@
     <include file="config/liquibase/changelog/20230725163147_added_entity_constraints_Fournisseur.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230725163148_added_entity_constraints_Client.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230725163155_added_entity_constraints_Tarif.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230725163156_added_entity_Profile.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230725163157_added_entity_Menu.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230725163158_added_entity_Droit_Profile.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230725163159_added_entity_reception.xml" relativeToChangelogFile="false"/>
+
+    
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

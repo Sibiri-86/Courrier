@@ -45,7 +45,7 @@ public class ClientServiceImpl implements ClientService {
     public ClientDTO save(ClientDTO clientDTO) {
         log.debug("Request to save Client : {}", clientDTO);
         Client client = clientMapper.toEntity(clientDTO);
-         client.setNumero(clientRepository.findAll().size()+0L );
+         
         client = clientRepository.save(client);
         return clientMapper.toDto(client);
     }
@@ -60,7 +60,7 @@ public class ClientServiceImpl implements ClientService {
     @Transactional(readOnly = true)
     public Page<ClientDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Clients");
-        return clientRepository.findAll(pageable)
+        return clientRepository.findAllByDeletedFalse(pageable)
             .map(clientMapper::toDto);
     }
 
@@ -91,7 +91,7 @@ public class ClientServiceImpl implements ClientService {
     }
     
     public List<ClientDTO> findAllByPays(Long siteId) {
-          return clientRepository.findByPaysId(siteId).stream()
+          return clientRepository.findByPaysIdAndDeletedFalse(siteId).stream()
             .map(clientMapper::toDto).collect(Collectors.toList());
      }
 }

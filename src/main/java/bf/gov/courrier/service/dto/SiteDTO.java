@@ -16,15 +16,7 @@ public class SiteDTO implements Serializable {
 
     private Long paysId;
 
-    private Long numero;
-
-    public Long getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Long numero) {
-        this.numero = numero;
-    }
+   
 
     public Long getId() {
         return id;

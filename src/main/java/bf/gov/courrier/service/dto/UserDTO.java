@@ -52,6 +52,8 @@ public class UserDTO {
     private Instant lastModifiedDate;
 
     private Set<String> authorities;
+    private Long agentId;
+    private Long profileId;
 
     public UserDTO() {
         // Empty constructor needed for Jackson.
@@ -73,8 +75,33 @@ public class UserDTO {
         this.authorities = user.getAuthorities().stream()
             .map(Authority::getName)
             .collect(Collectors.toSet());
+        if(user.getAgent() != null && user.getAgent().getId() !=null) {
+            this.agentId = user.getAgent().getId();
+        }
+        
+        if(user.getProfile() != null && user.getProfile().getId() !=null) {
+            this.profileId = user.getProfile().getId();
+        }
+        
     }
 
+    public Long getAgentId() {
+        return agentId;
+    }
+
+    public void setAgentId(Long agentId) {
+        this.agentId = agentId;
+    }
+
+    public Long getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(Long profileId) {
+        this.profileId = profileId;
+    }
+
+    
     public Long getId() {
         return id;
     }

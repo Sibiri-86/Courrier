@@ -16,6 +16,8 @@ public class TransitaireDTO implements Serializable {
     private String tel1;
 
     private String tel2;
+    
+    private String pays;
 
     private String codePays1;
 
@@ -24,18 +26,9 @@ public class TransitaireDTO implements Serializable {
 
     private Long paysId;
 
-    private String pays;
 
     
-    private Long numero;
-
-    public Long getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Long numero) {
-        this.numero = numero;
-    }
+   
     public String getPays() {
         return pays;
     }

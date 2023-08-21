@@ -39,11 +39,22 @@ public class Agent implements Serializable {
     @Column(name = "fonction")
     private String fonction;
     
-    private Long numero;
 
     @ManyToOne
     @JsonIgnoreProperties("agents")
     private Site site;
+    
+    private Boolean deleted = Boolean.FALSE;
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+    
+    
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -145,13 +156,7 @@ public class Agent implements Serializable {
         this.site = site;
     }
 
-    public Long getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Long numero) {
-        this.numero = numero;
-    }
+    
     
     
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove

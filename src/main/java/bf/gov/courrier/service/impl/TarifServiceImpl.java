@@ -43,7 +43,7 @@ public class TarifServiceImpl implements TarifService {
     public TarifDTO save(TarifDTO tarifDTO) {
         log.debug("Request to save Tarif : {}", tarifDTO);
         Tarif tarif = tarifMapper.toEntity(tarifDTO);
-         tarif.setNumero(tarifRepository.findAll().size()+0L );
+        
         tarif = tarifRepository.save(tarif);
         return tarifMapper.toDto(tarif);
     }
@@ -58,7 +58,7 @@ public class TarifServiceImpl implements TarifService {
     @Transactional(readOnly = true)
     public Page<TarifDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Tarifs");
-        return tarifRepository.findAll(pageable)
+        return tarifRepository.findAllByDeletedFalse(pageable)
             .map(tarifMapper::toDto);
     }
 

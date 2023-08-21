@@ -45,7 +45,7 @@ public class AgentServiceImpl implements AgentService {
     public AgentDTO save(AgentDTO agentDTO) {
         log.debug("Request to save Agent : {}", agentDTO);
         Agent agent = agentMapper.toEntity(agentDTO);
-        agent.setNumero(agentRepository.findAll().size()+0L );
+        
         agent = agentRepository.save(agent);
         return agentMapper.toDto(agent);
     }
@@ -60,7 +60,7 @@ public class AgentServiceImpl implements AgentService {
     @Transactional(readOnly = true)
     public Page<AgentDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Agents");
-        return agentRepository.findAll(pageable)
+        return agentRepository.findAllByDeletedFalse(pageable)
             .map(agentMapper::toDto);
     }
 
@@ -91,7 +91,7 @@ public class AgentServiceImpl implements AgentService {
     }
     
      public List<AgentDTO> findAllBySite(Long siteId) {
-          return agentRepository.findBySiteId(siteId).stream()
+          return agentRepository.findBySiteIdAndDeletedFalse(siteId).stream()
             .map(agentMapper::toDto).collect(Collectors.toList());
      }
 }

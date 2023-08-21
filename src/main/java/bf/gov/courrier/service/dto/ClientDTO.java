@@ -16,29 +16,22 @@ public class ClientDTO implements Serializable {
     private String email;
 
     private String tel;
+    
+    private String whatsapp;
+    
+    private String pays;
 
     private String codePays;
 
     private String codePays1;
 
-    private String whatsapp;
 
     private Double longitude;
 
     private Double latitude;
 
-    private String pays;
-
     private Long paysId;
-    private Long numero;
-
-    public Long getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Long numero) {
-        this.numero = numero;
-    }
+    
 
     public String getPays() {
         return pays;

@@ -43,14 +43,14 @@ public class Transitaire implements Serializable {
     @JsonIgnoreProperties("transitaires")
     private Pays pays;
     
-    private Long numero;
+    private Boolean deleted = Boolean.FALSE;
 
-    public Long getNumero() {
-        return numero;
+    public Boolean getDeleted() {
+        return deleted;
     }
 
-    public void setNumero(Long numero) {
-        this.numero = numero;
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
     }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

@@ -57,7 +57,7 @@ public class RayonServiceImpl implements RayonService {
     @Transactional(readOnly = true)
     public Page<RayonDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Rayons");
-        return rayonRepository.findAll(pageable)
+        return rayonRepository.findAllByDeletedFalse(pageable)
             .map(rayonMapper::toDto);
     }
 

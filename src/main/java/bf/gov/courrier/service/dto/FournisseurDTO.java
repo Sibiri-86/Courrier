@@ -14,25 +14,17 @@ public class FournisseurDTO implements Serializable {
     private String email;
 
     private String contact;
+    
+    private String pays;
 
     private String codePays;
-
 
     private Long paysId;
 
     private Long typeId;
-    private String pays;
     
-    private Long numero;
-
-    public Long getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Long numero) {
-        this.numero = numero;
-    }
-
+    
+    
     public String getPays() {
         return pays;
     }

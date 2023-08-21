@@ -45,7 +45,7 @@ public class TransitaireServiceImpl implements TransitaireService {
     public TransitaireDTO save(TransitaireDTO transitaireDTO) {
         log.debug("Request to save Transitaire : {}", transitaireDTO);
         Transitaire transitaire = transitaireMapper.toEntity(transitaireDTO);
-         transitaire.setNumero(transitaireRepository.findAll().size()+0L );
+        
         transitaire = transitaireRepository.save(transitaire);
         return transitaireMapper.toDto(transitaire);
     }
@@ -60,7 +60,7 @@ public class TransitaireServiceImpl implements TransitaireService {
     @Transactional(readOnly = true)
     public Page<TransitaireDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Transitaires");
-        return transitaireRepository.findAll(pageable)
+        return transitaireRepository.findAllByDeletedFalse(pageable)
             .map(transitaireMapper::toDto);
     }
 
@@ -91,7 +91,7 @@ public class TransitaireServiceImpl implements TransitaireService {
     }
     
     public List<TransitaireDTO> findAllByPays(Long paysId) {
-          return transitaireRepository.findByPaysId(paysId).stream()
+          return transitaireRepository.findByPaysIdAndDeletedFalse(paysId).stream()
             .map(transitaireMapper::toDto).collect(Collectors.toList());
      }
 }

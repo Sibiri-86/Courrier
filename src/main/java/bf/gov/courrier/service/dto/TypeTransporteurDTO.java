@@ -16,13 +16,7 @@ public class TypeTransporteurDTO implements Serializable {
     
     private Long numero;
 
-    public Long getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Long numero) {
-        this.numero = numero;
-    }
+    
 
     public Long getId() {
         return id;

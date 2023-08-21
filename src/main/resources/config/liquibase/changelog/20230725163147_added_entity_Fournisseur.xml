@@ -45,7 +45,7 @@
             <column name="type_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="numero" type="bigint">
+            <column name="deleted" type="Boolean">
                 <constraints nullable="true" />
             </column>
 

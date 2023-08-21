@@ -45,7 +45,7 @@ public class SiteServiceImpl implements SiteService {
     public SiteDTO save(SiteDTO siteDTO) {
         log.debug("Request to save Site : {}", siteDTO);
         Site site = siteMapper.toEntity(siteDTO);
-         site.setNumero(siteRepository.findAll().size()+0L );
+         
         site = siteRepository.save(site);
         return siteMapper.toDto(site);
     }
@@ -60,7 +60,7 @@ public class SiteServiceImpl implements SiteService {
     @Transactional(readOnly = true)
     public Page<SiteDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Sites");
-        return siteRepository.findAll(pageable)
+        return siteRepository.findAllByDeletedFalse(pageable)
             .map(siteMapper::toDto);
     }
 
@@ -91,7 +91,7 @@ public class SiteServiceImpl implements SiteService {
     }
     
     public List<SiteDTO> findAllByPays(Long siteId) {
-          return siteRepository.findByPaysId(siteId).stream()
+          return siteRepository.findByPaysIdAndDeletedFalse(siteId).stream()
             .map(siteMapper::toDto).collect(Collectors.toList());
      }
 }

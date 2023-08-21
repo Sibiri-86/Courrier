@@ -43,7 +43,7 @@ public class PaysServiceImpl implements PaysService {
     public PaysDTO save(PaysDTO paysDTO) {
         log.debug("Request to save Pays : {}", paysDTO);
         Pays pays = paysMapper.toEntity(paysDTO);
-         pays.setNumero(paysRepository.findAll().size()+0L );
+       
         pays = paysRepository.save(pays);
         return paysMapper.toDto(pays);
     }
@@ -58,7 +58,7 @@ public class PaysServiceImpl implements PaysService {
     @Transactional(readOnly = true)
     public Page<PaysDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Pays");
-        return paysRepository.findAll(pageable)
+        return paysRepository.findAllByDeletedFalse(pageable)
             .map(paysMapper::toDto);
     }
 

@@ -28,7 +28,6 @@ public class Pays implements Serializable {
 
     @Column(name = "libelle")
     private String libelle;
-     private Long numero;
 
     @OneToMany(mappedBy = "pays")
     private Set<Site> sites = new HashSet<>();
@@ -40,12 +39,14 @@ public class Pays implements Serializable {
     private Set<Client> clients = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 
-    public Long getNumero() {
-        return numero;
+    private Boolean deleted = Boolean.FALSE;
+
+    public Boolean getDeleted() {
+        return deleted;
     }
 
-    public void setNumero(Long numero) {
-        this.numero = numero;
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
     }
     
     public Long getId() {

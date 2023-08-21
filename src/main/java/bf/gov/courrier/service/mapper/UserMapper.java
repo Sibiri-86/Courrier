@@ -2,12 +2,17 @@ package bf.gov.courrier.service.mapper;
 
 import bf.gov.courrier.domain.Authority;
 import bf.gov.courrier.domain.User;
+import bf.gov.courrier.repository.AgentRepository;
 import bf.gov.courrier.service.dto.UserDTO;
 
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
+import bf.gov.courrier.domain.Agent;
+import bf.gov.courrier.domain.Profile;
+import bf.gov.courrier.repository.ProfileRepository;
 
 /**
  * Mapper for the entity User and its DTO called UserDTO.
@@ -18,6 +23,11 @@ import java.util.stream.Collectors;
 @Service
 public class UserMapper {
 
+    @Autowired
+    AgentRepository agentRepository;
+    @Autowired
+    ProfileRepository profileRepository;
+    
     public List<UserDTO> usersToUserDTOs(List<User> users) {
         return users.stream()
             .filter(Objects::nonNull)
@@ -51,11 +61,22 @@ public class UserMapper {
             user.setLangKey(userDTO.getLangKey());
             Set<Authority> authorities = this.authoritiesFromStrings(userDTO.getAuthorities());
             user.setAuthorities(authorities);
+            Optional<Agent> agnt= findById(userDTO.getAgentId());
+            if(agnt.isPresent()) {
+                user.setAgent(agnt.get());
+            }
+            Optional<Profile> profile = profileRepository.findById(userDTO.getProfileId());
+            if(profile.isPresent()) {
+                user.setProfile(profile.get());
+            }
             return user;
         }
     }
 
 
+    private Optional<Agent> findById(Long id) {
+        return agentRepository.findById(id);
+    }
     private Set<Authority> authoritiesFromStrings(Set<String> authoritiesAsString) {
         Set<Authority> authorities = new HashSet<>();
 

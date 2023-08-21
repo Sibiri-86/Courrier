@@ -29,18 +29,19 @@ public class TypeTransporteur implements Serializable {
     @Column(name = "libelle")
     private String libelle;
     
-    private Long numero;
-
-    public Long getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Long numero) {
-        this.numero = numero;
-    }
-
+    
     @OneToMany(mappedBy = "type")
     private Set<Fournisseur> fournisseurs = new HashSet<>();
+    
+     private Boolean deleted = Boolean.FALSE;
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;

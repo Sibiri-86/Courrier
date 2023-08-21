@@ -42,6 +42,12 @@
             </column>
             <column name="last_modified_by" type="varchar(50)"/>
             <column name="last_modified_date" type="timestamp"/>
+            <column name="agent_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="profile_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
         </createTable>
 
         <createTable tableName="jhi_authority">
@@ -112,6 +118,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="value" type="varchar(255)"/>
+            
         </createTable>
         <addPrimaryKey columnNames="event_id, name" tableName="jhi_persistent_audit_evt_data"/>
 

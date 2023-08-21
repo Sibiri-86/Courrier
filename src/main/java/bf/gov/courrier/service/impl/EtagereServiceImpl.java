@@ -57,7 +57,7 @@ public class EtagereServiceImpl implements EtagereService {
     @Transactional(readOnly = true)
     public Page<EtagereDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Etageres");
-        return etagereRepository.findAll(pageable)
+        return etagereRepository.findAllByDeletedFalse(pageable)
             .map(etagereMapper::toDto);
     }
 

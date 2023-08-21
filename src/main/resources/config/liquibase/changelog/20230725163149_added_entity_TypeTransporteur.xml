@@ -29,9 +29,9 @@
             <column name="libelle" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="numero" type="bigint">
+           <column name="deleted" type="Boolean">
                 <constraints nullable="true" />
-            </column>
+           </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>

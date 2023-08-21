@@ -36,14 +36,14 @@ public class TailleBalle implements Serializable {
     private Set<Tarif> tarifs = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     
-    private Long numero;
+     private Boolean deleted = Boolean.FALSE;
 
-    public Long getNumero() {
-        return numero;
+    public Boolean getDeleted() {
+        return deleted;
     }
 
-    public void setNumero(Long numero) {
-        this.numero = numero;
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
     }
      
      

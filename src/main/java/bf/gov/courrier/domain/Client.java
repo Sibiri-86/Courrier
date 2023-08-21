@@ -48,21 +48,21 @@ public class Client implements Serializable {
     @Column(name = "latitude")
     private Double latitude;
     
-    private Long numero;
 
     @ManyToOne
     @JsonIgnoreProperties("clients")
     private Pays pays;
     
-    public Long getNumero() {
-        return numero;
+    private Boolean deleted = Boolean.FALSE;
+
+    public Boolean getDeleted() {
+        return deleted;
     }
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public void setNumero(Long numero) {    
-        this.numero = numero;
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
     }
-
+    
     public Long getId() {
         return id;
     }

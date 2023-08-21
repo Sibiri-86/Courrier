@@ -43,7 +43,7 @@ public class NatureMarchandServiceImpl implements NatureMarchandService {
     public NatureMarchandDTO save(NatureMarchandDTO natureMarchandDTO) {
         log.debug("Request to save NatureMarchand : {}", natureMarchandDTO);
         NatureMarchand natureMarchand = natureMarchandMapper.toEntity(natureMarchandDTO);
-         natureMarchand.setNumero(natureMarchandRepository.findAll().size()+0L );
+        
         natureMarchand = natureMarchandRepository.save(natureMarchand);
         return natureMarchandMapper.toDto(natureMarchand);
     }
@@ -58,7 +58,7 @@ public class NatureMarchandServiceImpl implements NatureMarchandService {
     @Transactional(readOnly = true)
     public Page<NatureMarchandDTO> findAll(Pageable pageable) {
         log.debug("Request to get all NatureMarchands");
-        return natureMarchandRepository.findAll(pageable)
+        return natureMarchandRepository.findAllByDeletedFalse(pageable)
             .map(natureMarchandMapper::toDto);
     }
 

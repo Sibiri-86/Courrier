@@ -1,6 +1,8 @@
 package bf.gov.courrier.repository;
 
 import bf.gov.courrier.domain.Pays;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -12,4 +14,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PaysRepository extends JpaRepository<Pays, Long> {
 
+    Page<Pays>findAllByDeletedFalse(Pageable pageable);
+    
 }

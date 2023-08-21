@@ -45,7 +45,7 @@ public class FournisseurServiceImpl implements FournisseurService {
     public FournisseurDTO save(FournisseurDTO fournisseurDTO) {
         log.debug("Request to save Fournisseur : {}", fournisseurDTO);
         Fournisseur fournisseur = fournisseurMapper.toEntity(fournisseurDTO);
-         fournisseur.setNumero(fournisseurRepository.findAll().size()+0L );
+        
         fournisseur = fournisseurRepository.save(fournisseur);
         return fournisseurMapper.toDto(fournisseur);
     }
@@ -60,7 +60,7 @@ public class FournisseurServiceImpl implements FournisseurService {
     @Transactional(readOnly = true)
     public Page<FournisseurDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Fournisseurs");
-        return fournisseurRepository.findAll(pageable)
+        return fournisseurRepository.findAllByDeletedFalse(pageable)
             .map(fournisseurMapper::toDto);
     }
 
@@ -90,8 +90,8 @@ public class FournisseurServiceImpl implements FournisseurService {
         fournisseurRepository.deleteById(id);
     }
     
-    public List<FournisseurDTO> findAllByPays(Long siteId) {
-          return fournisseurRepository.findByPaysId(siteId).stream()
+    public List<FournisseurDTO> findAllByPays(Long paysId) {
+          return fournisseurRepository.findByPaysIdAndDeletedFalse(paysId).stream()
             .map(fournisseurMapper::toDto).collect(Collectors.toList());
      }
 }

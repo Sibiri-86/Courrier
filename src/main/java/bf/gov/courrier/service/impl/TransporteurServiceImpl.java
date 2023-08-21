@@ -43,7 +43,7 @@ public class TransporteurServiceImpl implements TransporteurService {
     public TransporteurDTO save(TransporteurDTO transporteurDTO) {
         log.debug("Request to save Transporteur : {}", transporteurDTO);
         Transporteur transporteur = transporteurMapper.toEntity(transporteurDTO);
-         transporteur.setNumero(transporteurRepository.findAll().size()+0L );
+        
         transporteur = transporteurRepository.save(transporteur);
         return transporteurMapper.toDto(transporteur);
     }
@@ -58,7 +58,7 @@ public class TransporteurServiceImpl implements TransporteurService {
     @Transactional(readOnly = true)
     public Page<TransporteurDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Transporteurs");
-        return transporteurRepository.findAll(pageable)
+        return transporteurRepository.findAllByDeletedFalse(pageable)
             .map(transporteurMapper::toDto);
     }
 

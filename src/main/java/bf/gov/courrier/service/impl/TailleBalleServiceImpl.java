@@ -43,7 +43,7 @@ public class TailleBalleServiceImpl implements TailleBalleService {
     public TailleBalleDTO save(TailleBalleDTO tailleBalleDTO) {
         log.debug("Request to save TailleBalle : {}", tailleBalleDTO);
         TailleBalle tailleBalle = tailleBalleMapper.toEntity(tailleBalleDTO);
-         tailleBalle.setNumero(tailleBalleRepository.findAll().size()+0L );
+        
         tailleBalle = tailleBalleRepository.save(tailleBalle);
         return tailleBalleMapper.toDto(tailleBalle);
     }
@@ -58,7 +58,7 @@ public class TailleBalleServiceImpl implements TailleBalleService {
     @Transactional(readOnly = true)
     public Page<TailleBalleDTO> findAll(Pageable pageable) {
         log.debug("Request to get all TailleBalles");
-        return tailleBalleRepository.findAll(pageable)
+        return tailleBalleRepository.findAllByDeletedFalse(pageable)
             .map(tailleBalleMapper::toDto);
     }
 

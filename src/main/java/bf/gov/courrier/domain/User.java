@@ -3,6 +3,8 @@ package bf.gov.courrier.domain;
 import bf.gov.courrier.config.Constants;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.BatchSize;
 import javax.validation.constraints.Email;
@@ -91,6 +93,32 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @BatchSize(size = 20)
     private Set<Authority> authorities = new HashSet<>();
+
+    @ManyToOne
+    @JsonIgnoreProperties("jhi_user")
+    private Agent agent;
+    
+    @ManyToOne
+    @JsonIgnoreProperties("jhi_user")
+    private Profile profile;
+
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+
 
     public Long getId() {
         return id;
