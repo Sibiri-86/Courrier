@@ -1,6 +1,7 @@
 package bf.gov.courrier.service;
 
 import bf.gov.courrier.service.dto.AgentDTO;
+import bf.gov.courrier.service.dto.ColisDTO;
 import bf.gov.courrier.service.dto.ReceptionDTO;
 
 import java.util.List;
@@ -46,6 +47,8 @@ public interface ReceptionService {
      * @param id the id of the entity
      */
     void delete(Long id);
+    
+    void deleteColis(Long colisId);
     
    // List<AgentDTO> findAllBySite(Long siteId);
 }

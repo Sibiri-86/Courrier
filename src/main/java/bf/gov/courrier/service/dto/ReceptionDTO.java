@@ -1,5 +1,8 @@
 package bf.gov.courrier.service.dto;
+import bf.gov.courrier.domain.Colis;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -27,6 +30,17 @@ public class ReceptionDTO implements Serializable {
     private String client;
 
     private String fournisseur;
+    
+    private List<Colis> colis = ArrayList<>();
+
+    public List<Colis> getColis() {
+        return colis;
+    }
+
+    public void setColis(List<Colis> colis) {
+        this.colis = colis;
+    }
+    
 
     public Long getId() {
         return id;

@@ -2,12 +2,17 @@ package bf.gov.courrier.service.impl;
 
 import bf.gov.courrier.service.ReceptionService;
 import bf.gov.courrier.domain.Agent;
+import bf.gov.courrier.domain.Colis;
 import bf.gov.courrier.domain.Reception;
 import bf.gov.courrier.repository.AgentRepository;
+import bf.gov.courrier.repository.ColisRepository;
 import bf.gov.courrier.repository.ReceptionRepository;
+import bf.gov.courrier.service.dto.ColisDTO;
 import bf.gov.courrier.service.dto.ReceptionDTO;
 import bf.gov.courrier.service.mapper.AgentMapper;
+import bf.gov.courrier.service.mapper.ColisMapper;
 import bf.gov.courrier.service.mapper.ReceptionMapper;
+import com.google.j2objc.annotations.AutoreleasePool;
 
 import java.util.List;
 import org.slf4j.Logger;
@@ -20,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Service Implementation for managing Agent.
@@ -33,6 +39,10 @@ public class ReceptionServiceImpl implements ReceptionService {
     private final ReceptionRepository receptionRepository;
 
     private final ReceptionMapper receptionMapper;
+    @Autowired
+    ColisRepository colisRepository;
+    @Autowired 
+    ColisMapper colisMapper;
 
     public ReceptionServiceImpl(ReceptionRepository receptionRepository, ReceptionMapper receptionMapper) {
         this.receptionRepository = receptionRepository;
@@ -48,12 +58,29 @@ public class ReceptionServiceImpl implements ReceptionService {
     @Override
     public ReceptionDTO save(ReceptionDTO receptionDTO) {
         log.debug("Request to save Agent : {}", receptionDTO);
+        
+        
         Reception reception = receptionMapper.toEntity(receptionDTO);
         
         reception = receptionRepository.save(reception);
+        if(receptionDTO.getColis() !=null && !receptionDTO.getColis().isEmpty()) {
+            for(Colis col: receptionDTO.getColis()) {
+                col.setReception(reception);
+                colisRepository.save(col);
+            }
+        }
         return receptionMapper.toDto(reception);
     }
 
+    
+    @Override
+    public void deleteColis(Long colisId) {
+        Optional<Colis> colis= colisRepository.findById(colisId);
+        if(colis.isPresent()) {
+            colis.get().setDeleted(Boolean.TRUE);
+            colisMapper.toDto(colis.get());
+        }
+    }
     /**
      * Get all the receptions.
      *

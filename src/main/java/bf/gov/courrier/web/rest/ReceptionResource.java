@@ -77,6 +77,8 @@ public class ReceptionResource {
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, receptionDTO.getId().toString()))
             .body(result);
     }
+    
+    
 
     /**
      * GET  /receptions : get all the receptions.
@@ -116,6 +118,13 @@ public class ReceptionResource {
         log.debug("REST request to delete reception : {}", id);
         receptionService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+    
+    @DeleteMapping("/receptions/colis/{id}")
+    public ResponseEntity<Void> deleteColis(@PathVariable Long colisId) {
+        log.debug("REST request to delete reception : {}", colisId);
+        receptionService.deleteColis(colisId);
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, colisId.toString())).build();
     }
     
     
