@@ -28,7 +28,10 @@
     <include file="config/liquibase/changelog/20230725163156_added_entity_Profile.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230725163157_added_entity_Menu.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230725163158_added_entity_Droit_Profile.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20230725163159_added_entity_reception.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230725163159_added_entity_Reception.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230725163160_added_entity_Colis.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230725163161_added_entity_Emballage.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230725163162_added_entity_Chargement.xml" relativeToChangelogFile="false"/>
 
     
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->

@@ -17,34 +17,41 @@
     <!--
         Added the entity TailleBalle.
     -->
-    <changeSet id="20230725163159-1" author="jhipster">
-        <createTable tableName="reception">
+    <changeSet id="20230725163162-1" author="jhipster">
+        <createTable tableName="chargement">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="num_recep" type="varchar(255)">
+      
+
+            <column name="num_balle" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-             <column name="num_bordereau" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="compagine_livraison" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-             <column name="observation" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-             <column name="date_reception" type="DATE">
-                <constraints nullable="true" />
-            </column>
-            <column name="client_id" type="bigint">
+             <column name="num_physique_container" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="fournisseur_id" type="bigint">
+            <column name="num_logique_container" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="user_id" type="bigint">
+            <column name="num_groupage" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="poids" type="bigint">
+                <constraints nullable="true" />
+            </column>
+              <column name="date_chargement" type="DATE">
+                <constraints nullable="true" />
+            </column>
+
+            
+            
+            <column name="transitaire_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            
+        
+          <column name="observation" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
            <column name="deleted" type="Boolean">

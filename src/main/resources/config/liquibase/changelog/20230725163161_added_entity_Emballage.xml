@@ -17,36 +17,33 @@
     <!--
         Added the entity TailleBalle.
     -->
-    <changeSet id="20230725163159-1" author="jhipster">
-        <createTable tableName="reception">
+    <changeSet id="20230725163161-1" author="jhipster">
+        <createTable tableName="emballage">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="num_recep" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-             <column name="num_bordereau" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="compagine_livraison" type="varchar(255)">
+            <column name="num_balle" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
              <column name="observation" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-             <column name="date_reception" type="DATE">
+            <column name="date_emballe" type="DATE">
                 <constraints nullable="true" />
             </column>
-            <column name="client_id" type="bigint">
+            
+            
+            <column name="taille_balle_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-
-            <column name="fournisseur_id" type="bigint">
+            
+            <column name="colis_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="user_id" type="bigint">
+            <column name="chargement_id" type="bigint">
                 <constraints nullable="true" />
             </column>
+   
            <column name="deleted" type="Boolean">
                 <constraints nullable="true" />
             </column>

@@ -1,12 +1,18 @@
 package bf.gov.courrier.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * A Agent.
@@ -32,7 +38,10 @@ public class Reception implements Serializable {
 
     @Column(name = "observation")
     private String observation;
-
+    @Column(name = "date_reception")
+    private LocalDate dateReception;
+    @Column(name = "user_id")
+     private Long userId;
    
     @ManyToOne
     @JsonIgnoreProperties("reception")
@@ -42,11 +51,41 @@ public class Reception implements Serializable {
     @JsonIgnoreProperties("reception")
     private Client client;
     
-    @ManyToOne
-    @JsonIgnoreProperties("reception")
-    private User user;
+   
     
-    private Boolean deleted = Boolean.FALSE;
+     private Boolean deleted = Boolean.FALSE;
+    @OneToMany(mappedBy = "reception")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Colis> colisList = new HashSet<>();
+
+    public LocalDate getDateReception() {
+        return dateReception;
+    }
+
+    public void setDateReception(LocalDate dateReception) {
+        this.dateReception = dateReception;
+    }
+
+    
+    
+    public Set<Colis> getColisList() {
+        return colisList;
+    }
+
+    public void setColisList(Set<Colis> colisList) {
+        this.colisList = colisList;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+      
+   
 
     public Boolean getDeleted() {
         return deleted;
@@ -115,13 +154,7 @@ public class Reception implements Serializable {
         this.client = client;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+   
 
     
     

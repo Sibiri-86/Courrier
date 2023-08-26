@@ -4,7 +4,9 @@ import bf.gov.courrier.web.rest.errors.BadRequestAlertException;
 import bf.gov.courrier.web.rest.util.HeaderUtil;
 import bf.gov.courrier.web.rest.util.PaginationUtil;
 import bf.gov.courrier.service.dto.AgentDTO;
+import bf.gov.courrier.service.dto.ColisDTO;
 import bf.gov.courrier.service.dto.ReceptionDTO;
+import bf.gov.courrier.service.dto.SearchDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 
 import java.util.List;
 import java.util.Optional;
@@ -77,6 +80,8 @@ public class ReceptionResource {
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, receptionDTO.getId().toString()))
             .body(result);
     }
+    
+    
 
     /**
      * GET  /receptions : get all the receptions.
@@ -89,6 +94,62 @@ public class ReceptionResource {
         log.debug("REST request to get a page of receptions");
         Page<ReceptionDTO> page = receptionService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/receptions");
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+    
+    @PutMapping("/receptions/by-periode")
+    public ResponseEntity<List<ReceptionDTO>> getAllreceptionsByPeriode(Pageable pageable, @RequestBody SearchDTO searchDTO) {
+        log.debug("REST request to get a page of receptions");
+        System.out.println("=======dateDebut===============");
+        System.out.println(searchDTO.getDateDebut());
+        System.out.println(searchDTO.getDateFin());
+        System.out.println("======dateFin================");
+        Page<ReceptionDTO> page = receptionService.findAllByPeriode(pageable, searchDTO.getDateDebut(), searchDTO.getDateFin());
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/receptions/by-periode");
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+    
+    @PutMapping("/receptions/by-client")
+    public ResponseEntity<List<ReceptionDTO>> getAllreceptionsByPeriodeAndClient(Pageable pageable, @RequestBody SearchDTO searchDTO
+            ) {
+        log.debug("REST request to get a page of receptions");
+        Page<ReceptionDTO> page = receptionService.findAllByClient(pageable, searchDTO.getClientId(),searchDTO.getDateDebut(), searchDTO.getDateFin());
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/receptions/by-client");
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+    
+    
+     @PutMapping("/receptions/by-client-fournisseur")
+    public ResponseEntity<List<ReceptionDTO>> getAllreceptionsByPeriodeAndClientAndFournisseur(Pageable pageable, @RequestBody SearchDTO searchDTO
+           ) {
+        log.debug("REST request to get a page of receptions");
+        Page<ReceptionDTO> page = receptionService.findAllByClientAndFournisseur(pageable,searchDTO.getClientId(), searchDTO.getFournisseurId(),searchDTO.getDateDebut(), searchDTO.getDateFin());
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/receptions/by-client-fournisseur");
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+    
+    @PutMapping("/receptions/by-fournisseur")
+    public ResponseEntity<List<ReceptionDTO>> getAllreceptionsByPeriodeFournisseur(Pageable pageable, @RequestBody SearchDTO searchDTO
+            ) {
+        log.debug("REST request to get a page of receptions");
+        Page<ReceptionDTO> page = receptionService.findAllByFournisseur(pageable, searchDTO.getFournisseurId(),searchDTO.getDateDebut(), searchDTO.getDateFin());
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/receptions/by-fournisseur");
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+    
+    @GetMapping("/receptions/colis")
+    public ResponseEntity<List<ColisDTO>> findColisByReception(@RequestParam(name = "receptionId") Long receptionId, Pageable pageable) {
+        log.debug("REST request to get a page of receptions");
+        Page<ColisDTO> page = receptionService.findColisByReception(pageable, receptionId);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/receptions/colis");
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+    
+    @GetMapping("/receptions/colis-all")
+    public ResponseEntity<List<ColisDTO>> findAllColis( Pageable pageable) {
+        log.debug("REST request to get a page of receptions");
+        Page<ColisDTO> page = receptionService.findAllColis(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/receptions/colis-all");
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
@@ -116,6 +177,15 @@ public class ReceptionResource {
         log.debug("REST request to delete reception : {}", id);
         receptionService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+    
+    
+    
+    @DeleteMapping("/receptions/colis/{colisId}")
+    public ResponseEntity<Void> deleteColis(@PathVariable Long colisId) {
+        log.debug("REST request to delete reception : {}", colisId);
+        receptionService.deleteColis(colisId);
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, colisId.toString())).build();
     }
     
     

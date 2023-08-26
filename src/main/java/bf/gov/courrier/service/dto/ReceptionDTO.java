@@ -1,20 +1,28 @@
 package bf.gov.courrier.service.dto;
+import bf.gov.courrier.domain.Colis;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A DTO for the Agent entity.
  */
 public class ReceptionDTO implements Serializable {
 
-    private Long id;
-
-  
     private String numRecep;
+    private String client;
+
+    private String fournisseur;
+    private String compagineLivraison;
+    private LocalDate dateReception;
+    
+    private Long id;
 
     private String numBordereau;
 
-    private String compagineLivraison;
 
     private String observation;
     
@@ -24,9 +32,36 @@ public class ReceptionDTO implements Serializable {
      
      private Long userId;
 
-    private String client;
+   
+    
+    private List<ColisDTO> colis = new ArrayList<>();
+     private Set<Colis> colisList;
 
-    private String fournisseur;
+    public LocalDate getDateReception() {
+        return dateReception;
+    }
+
+    public void setDateReception(LocalDate dateReception) {
+        this.dateReception = dateReception;
+    }
+
+    public Set<Colis> getColisList() {
+        return colisList;
+    }
+
+    public void setColisList(Set<Colis> colisList) {
+        this.colisList = colisList;
+    }
+
+    public List<ColisDTO> getColis() {
+        return colis;
+    }
+
+    public void setColis(List<ColisDTO> colis) {
+        this.colis = colis;
+    }
+
+   
 
     public Long getId() {
         return id;
@@ -133,8 +168,12 @@ public class ReceptionDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "ReceptionDTO{" + "id=" + id + ", numRecep=" + numRecep + ", numBordereau=" + numBordereau + ", compagineLivraison=" + compagineLivraison + ", observation=" + observation + ", clientId=" + clientId + ", fournisseurId=" + fournisseurId + ", userId=" + userId + ", client=" + client + ", fournisseur=" + fournisseur + '}';
+        return "ReceptionDTO{" + "id=" + id + ", numRecep=" + numRecep + ", numBordereau=" + numBordereau + ", compagineLivraison=" + compagineLivraison + ", observation=" + observation + ", clientId=" + clientId + ", fournisseurId=" + fournisseurId + ", userId=" + userId + ", client=" + client + ", fournisseur=" + fournisseur + ", colis=" + colis + ", colisList=" + colisList + '}';
     }
+
+    
+
+    
 
    
 }

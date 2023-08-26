@@ -17,34 +17,66 @@
     <!--
         Added the entity TailleBalle.
     -->
-    <changeSet id="20230725163159-1" author="jhipster">
-        <createTable tableName="reception">
+    <changeSet id="20230725163160-1" author="jhipster">
+        <createTable tableName="colis">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="num_recep" type="varchar(255)">
+           
+            <column name="emplacement" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-             <column name="num_bordereau" type="varchar(255)">
+             <column name="num_colis" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="compagine_livraison" type="varchar(255)">
+            <column name="num_balle" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-             <column name="observation" type="varchar(255)">
+            <column name="statut" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+             <column name="poids" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="volume" type="bigint">
+                <constraints nullable="true" />
+            </column>
+           
+            <column name="date_emballe" type="DATE">
                 <constraints nullable="true" />
             </column>
              <column name="date_reception" type="DATE">
                 <constraints nullable="true" />
             </column>
-            <column name="client_id" type="bigint">
+            <column name="date_rangement" type="DATE">
                 <constraints nullable="true" />
             </column>
-
-            <column name="fournisseur_id" type="bigint">
+            <column name="date_chargement" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="user_id" type="bigint">
+            <column name="taille_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="emballage_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="nature_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="colis_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="reception_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="user_emballe_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="user_reception_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="user_chargement_id" type="bigint">
                 <constraints nullable="true" />
             </column>
            <column name="deleted" type="Boolean">

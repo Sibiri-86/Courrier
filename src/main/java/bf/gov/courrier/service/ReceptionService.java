@@ -1,7 +1,9 @@
 package bf.gov.courrier.service;
 
 import bf.gov.courrier.service.dto.AgentDTO;
+import bf.gov.courrier.service.dto.ColisDTO;
 import bf.gov.courrier.service.dto.ReceptionDTO;
+import java.time.LocalDate;
 
 import java.util.List;
 
@@ -30,6 +32,14 @@ public interface ReceptionService {
      * @return the list of entities
      */
     Page<ReceptionDTO> findAll(Pageable pageable);
+    
+    Page<ColisDTO> findColisByReception(Pageable pageable,Long receptionId);
+
+    Page<ColisDTO> findAllColis(Pageable pageable);
+    Page<ReceptionDTO> findAllByClient(Pageable pageable, Long clientId, LocalDate dateDebut, LocalDate dateFin);
+    Page<ReceptionDTO> findAllByFournisseur(Pageable pageable, Long fournisseurId, LocalDate dateDebut, LocalDate dateFin);
+    Page<ReceptionDTO> findAllByPeriode(Pageable pageable,  LocalDate dateDebut, LocalDate dateFin);
+    Page<ReceptionDTO> findAllByClientAndFournisseur(Pageable pageable, Long clientId, Long fournisseurId, LocalDate dateDebut, LocalDate dateFin);
 
 
     /**
@@ -46,6 +56,8 @@ public interface ReceptionService {
      * @param id the id of the entity
      */
     void delete(Long id);
+    
+    void deleteColis(Long colisId);
     
    // List<AgentDTO> findAllBySite(Long siteId);
 }

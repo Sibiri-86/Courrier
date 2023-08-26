@@ -35,14 +35,19 @@ public class UserJWTController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<JWTToken> authorize(@Valid @RequestBody LoginVM loginVM) {
-
+        System.out.println("=================laurent=======1=====");
         UsernamePasswordAuthenticationToken authenticationToken =
             new UsernamePasswordAuthenticationToken(loginVM.getUsername(), loginVM.getPassword());
 
+        System.out.println("=================laurent==2==========");
         Authentication authentication = this.authenticationManager.authenticate(authenticationToken);
+        System.out.println("=================laurent===3=========");
         SecurityContextHolder.getContext().setAuthentication(authentication);
+        System.out.println("=================laurent====4========");
         boolean rememberMe = (loginVM.isRememberMe() == null) ? false : loginVM.isRememberMe();
+        System.out.println("=================laurent====5========");
         String jwt = tokenProvider.createToken(authentication, rememberMe);
+        System.out.println("=================laurent====6========");
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
         return new ResponseEntity<>(new JWTToken(jwt), httpHeaders, HttpStatus.OK);
