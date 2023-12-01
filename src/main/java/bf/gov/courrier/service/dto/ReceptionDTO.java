@@ -31,7 +31,7 @@ public class ReceptionDTO implements Serializable {
 
     private String fournisseur;
     
-    private List<Colis> colis = ArrayList<>();
+    private List<Colis> colis = new ArrayList<>();
 
     public List<Colis> getColis() {
         return colis;

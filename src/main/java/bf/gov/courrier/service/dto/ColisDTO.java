@@ -1,14 +1,7 @@
 package bf.gov.courrier.service.dto;
 
-
-import bf.gov.courrier.domain.*;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import javax.persistence.*;
-
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Objects;
 
 /**
  * A Agent.
@@ -37,16 +30,16 @@ public class ColisDTO implements Serializable {
     private String nature;
 
     private Long receptionId;
-    private String reception;
+    private String numRecep;
     
     private Long tailleId;
     private String taille;
 
     private Long userReceptionId;
-    private String userReception;
-    
+    private String userRecep;
+
     private Long userEmballeId;
-    private String userEmballe;
+    private String userEmbal;
 
     public String getNature() {
         return nature;
@@ -56,13 +49,6 @@ public class ColisDTO implements Serializable {
         this.nature = nature;
     }
 
-    public String getReception() {
-        return reception;
-    }
-
-    public void setReception(String reception) {
-        this.reception = reception;
-    }
 
     public String getTaille() {
         return taille;
@@ -72,22 +58,30 @@ public class ColisDTO implements Serializable {
         this.taille = taille;
     }
 
-    public String getUserReception() {
-        return userReception;
+
+    public String getUserRecep() {
+        return userRecep;
     }
 
-    public void setUserReception(String userReception) {
-        this.userReception = userReception;
+    public void setUserRecep(String userRecep) {
+        this.userRecep = userRecep;
     }
 
-    public String getUserEmballe() {
-        return userEmballe;
+    public String getUserEmbal() {
+        return userEmbal;
     }
 
-    public void setUserEmballe(String userEmballe) {
-        this.userEmballe = userEmballe;
+    public void setUserEmbal(String userEmbal) {
+        this.userEmbal = userEmbal;
     }
 
+    public String getNumRecep() {
+        return numRecep;
+    }
+
+    public void setNumRecep(String numRecep) {
+        this.numRecep = numRecep;
+    }
 
     public Long getId() {
         return id;
@@ -216,5 +210,4 @@ public class ColisDTO implements Serializable {
         return "ColisDTO{" + "id=" + id + ", numColis=" + numColis + ", numBalle=" + numBalle + ", emplacement=" + emplacement + ", volume=" + volume + ", poids=" + poids + ", dateEmballe=" + dateEmballe + ", dateRangement=" + dateRangement + ", dateChargement=" + dateChargement + ", observation=" + observation + ", natureId=" + natureId + ", receptionId=" + receptionId + ", tailleId=" + tailleId + ", userReceptionId=" + userReceptionId + ", userEmballeId=" + userEmballeId + '}';
     }
 
-    
 }

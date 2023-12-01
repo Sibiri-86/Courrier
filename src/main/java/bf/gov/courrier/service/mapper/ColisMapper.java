@@ -2,7 +2,6 @@ package bf.gov.courrier.service.mapper;
 
 import bf.gov.courrier.domain.*;
 import bf.gov.courrier.service.dto.ColisDTO;
-import bf.gov.courrier.service.dto.ReceptionDTO;
 
 import org.mapstruct.*;
 
@@ -12,14 +11,16 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {NatureMarchandMapper.class, TailleBalleMapper.class, UserMapper.class, ReceptionMapper.class})
 public interface ColisMapper extends EntityMapper<ColisDTO, Colis> {
 
-    @Mapping(source = "nature_marchand.id", target = "natureId")
-    @Mapping(source = "nature_marchand.libelle", target = "nature")
-    @Mapping(source = "taille_balle.id", target = "tailleId")
-    @Mapping(source = "taille_balle.libelle", target = "taille")
-    @Mapping(source = "user.id", target = "userReceptionId")
-    @Mapping(source = "user.id", target = "userEmballeId")
+    @Mapping(source = "nature.id", target = "natureId")
+    @Mapping(source = "nature.libelle", target = "nature")
+    @Mapping(source = "taille.id", target = "tailleId")
+    @Mapping(source = "taille.libelle", target = "taille")
+    @Mapping(source = "userReception.id", target = "userReceptionId")
+    @Mapping(source = "userReception.login", target = "userRecep")
+    @Mapping(source = "userEmballe.id", target = "userEmballeId")
+    @Mapping(source = "userEmballe.login", target = "userEmbal")
     @Mapping(source = "reception.id", target = "receptionId")
-    @Mapping(source = "reception.libelle", target = "reception")
+    @Mapping(source = "reception.numRecep", target = "numRecep")
     
     ColisDTO toDto(Colis colis);
 

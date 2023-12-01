@@ -1,8 +1,6 @@
 package bf.gov.courrier.service;
 
 import bf.gov.courrier.service.dto.DroitProfileDTO;
-import bf.gov.courrier.service.dto.MenuDTO;
-import bf.gov.courrier.service.dto.ProfileDTO;
 import java.util.List;
 
 
