@@ -179,6 +179,13 @@ public class ReceptionResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
     
+    @DeleteMapping("/receptions/colis/{id}")
+    public ResponseEntity<Void> deleteColis(@PathVariable Long colisId) {
+        log.debug("REST request to delete reception : {}", colisId);
+        receptionService.deleteColis(colisId);
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, colisId.toString())).build();
+    }
+    
     
     
     @DeleteMapping("/receptions/colis/{colisId}")
